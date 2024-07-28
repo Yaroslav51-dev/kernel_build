@@ -39,5 +39,5 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
           name: dtbo.img
-          path: /home/runner/work//kernel_build/kernel_build/vayu/out/arch/arm64/boot/dtbo.img
+          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/dtbo.img
           
