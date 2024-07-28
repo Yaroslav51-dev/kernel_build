@@ -20,24 +20,24 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
           name: Image
-          path: /home/runner/work/android_kernel_xiaomi_vayu/android_kernel_xiaomi_vayu/vayu/out/arch/arm64/boot/Image
+          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/Image
 
        - name: Upload image
          uses: actions/upload-artifact@v3
          with:
           name: Image.gz
-          path: /home/runner/work/android_kernel_xiaomi_vayu/android_kernel_xiaomi_vayu/vayu/out/arch/arm64/boot/Image.gz
+          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/Image.gz
           
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtb
-          path: /home/runner/work/android_kernel_xiaomi_vayu/android_kernel_xiaomi_vayu/vayu/out/arch/arm64/boot/dtb
+          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/dtb
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtbo.img
-          path: /home/runner/work/android_kernel_xiaomi_vayu/android_kernel_xiaomi_vayu/vayu/out/arch/arm64/boot/dtbo.img
+          path: /home/runner/work//kernel_build/kernel_build/vayu/out/arch/arm64/boot/dtbo.img
           
