@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:
        - name: git clone
-         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu.git -b main vayu
+         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main vayu
        
        - name: build
          run: cd vayu && bash build.sh
