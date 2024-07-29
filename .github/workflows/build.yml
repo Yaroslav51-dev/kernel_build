@@ -10,40 +10,37 @@ jobs:
       # added or changed files to the repository.
       contents: write
     steps:     
-       - name: echo 
-         run: echo $HOME
-       
        - name: git clone
-         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main vayu
+         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main $HOME/vayu
        
        - name: proton clang
-         run: git clone -q --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r510928.git -b 14.0 clang
+         run: git clone -q --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r510928.git -b 14.0 $HOME/clang
        
        - name: build
-         run: cd vayu && bash build.sh
+         run: bash $HOME/vayu/build.sh
          
        - name: Upload image
          uses: actions/upload-artifact@v3
          with:
           name: Image
-          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/Image
+          path: $HOMEvayu/out/arch/arm64/boot/Image
 
        - name: Upload image
          uses: actions/upload-artifact@v3
          with:
           name: Image.gz
-          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/Image.gz
+          path: $HOME/vayu/out/arch/arm64/boot/Image.gz
           
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtb
-          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/dtb
+          path: $HOMEvayu/out/arch/arm64/boot/dtb
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtbo.img
-          path: /home/runner/work/kernel_build/kernel_build/vayu/out/arch/arm64/boot/dtbo.img
+          path: $HOME/vayu/out/arch/arm64/boot/dtbo.img
           
