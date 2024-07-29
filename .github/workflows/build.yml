@@ -17,7 +17,7 @@ jobs:
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main vayu
        
        - name: echo 
-         run: cd vayu && echo $HOME
+         run: git clone https://github.com/kdrag0n/proton-clang.git -b master --depth=1 clang
        
        - name: build
          run: cd vayu && bash build.sh
