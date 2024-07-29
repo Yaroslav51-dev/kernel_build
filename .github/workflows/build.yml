@@ -29,8 +29,7 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
           name: Image.gz
-          path: $HOME/vayu/out/arch/arm64/boot/Image.gz
-          
+          path: $HOME/vayu/out/arch/arm64/boot/Image.gz          
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
