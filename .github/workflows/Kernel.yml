@@ -13,8 +13,8 @@ jobs:
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main $HOME/vayu
          
-       - name: google clang
-         run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567 -b 14.0 $HOME/clang
+#       - name: google clang
+  #       run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567 -b 14.0 $HOME/clang
 
        - name: google gcc
          run: |
