@@ -16,9 +16,12 @@ jobs:
        - name: google clang
          run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567 -b 14.0 $HOME/clang
 
-#       - name: google gcc
-  #       run: | 
-                
+       - name: google gcc
+         run: |
+                 mkdir -p -v $HOME/gcc
+                 aria2c -o gcc.tar.gz https://github.com/XSans0/WeebX-Clang/releases/download/WeebX-Clang-18.1.8-release/WeebX-Clang-18.1.8.tar.gz
+                 tar -C $HOME/gcc -zxf gcc.tar.gz
+                 
        - name: build
          run: bash $HOME/vayu/build.sh
          
