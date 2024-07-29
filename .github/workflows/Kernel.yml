@@ -13,9 +13,6 @@ jobs:
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
          
-#       - name: google clang
-  #       run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567 -b 14.0 $HOME/clang
-
        - name: google gcc
          run: |
                  mkdir -p -v $HOME/gcc
@@ -24,27 +21,28 @@ jobs:
                  
        - name: build
          run: bash $HOME/vayu/build.sh
+
+       - name: build
+         run: |
+          mkdir -p -v $HOME/upload
+          cp out/arch/arm64/boot/Image $HOME/upload
+          cat out/arch/arm64/boot/dts/qcom/*.dtb > $HOME/upload
+          cp out/arch/arm64/boot/dtbo.img $HOME/upload         
          
        - name: Upload image
          uses: actions/upload-artifact@v3
          with:
           name: Image
-          path: $HOME/vayu/out/arch/arm64/boot/Image
-
-       - name: Upload image
-         uses: actions/upload-artifact@v3
-         with:
-          name: Image.gz
-          path: $HOME/vayu/out/arch/arm64/boot/Image.gz          
+          path: /home/runners/upload/Image          
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtb
-          path: $HOME/vayu/out/arch/arm64/boot/dtb
+          path: /home/runners/upload/dtb
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtbo.img
-          path: $HOME/vayu/out/arch/arm64/boot/dtbo.img
+          path: /home/runners/upload/dtbo.img
