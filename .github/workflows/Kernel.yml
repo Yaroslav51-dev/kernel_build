@@ -1,4 +1,4 @@
-name: Build Kernel
+name: Build with Google toolchain
 
 on:
   workflow_dispatch:
@@ -9,12 +9,12 @@ jobs:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
       contents: write
-    steps:     
+    steps:          
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main $HOME/vayu
-       
-       - name: proton clang
-         run: git clone -q --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r510928.git -b 14.0 $HOME/clang
+         
+       - name: google clang
+         run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android-prebuilts-clang-host-linux-x-86-prelude-clang.git -b 13.0 $HOME/clang
        
        - name: build
          run: bash $HOME/vayu/build.sh
@@ -23,7 +23,7 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
           name: Image
-          path: $HOMEvayu/out/arch/arm64/boot/Image
+          path: $HOME/vayu/out/arch/arm64/boot/Image
 
        - name: Upload image
          uses: actions/upload-artifact@v3
@@ -35,11 +35,10 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
           name: dtb
-          path: $HOMEvayu/out/arch/arm64/boot/dtb
+          path: $HOME/vayu/out/arch/arm64/boot/dtb
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtbo.img
           path: $HOME/vayu/out/arch/arm64/boot/dtbo.img
-          
