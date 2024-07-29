@@ -10,11 +10,18 @@ jobs:
       # added or changed files to the repository.
       contents: write
     steps:
+       
+       - name: echo 
+         run: echo $HOME
+       
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main vayu
        
+      - name: echo 
+         run: cd vayu && echo $HOME
+       
        - name: build
-         run: cd vayu && bash build.sh
+         run: cd vayu && bash build.shq
        
        - name: echo 
          run: echo $HOME
