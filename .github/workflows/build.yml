@@ -15,7 +15,10 @@ jobs:
        
        - name: build
          run: cd vayu && bash build.sh
-
+       
+       - name: echo 
+         run: echo $HOME
+         
        - name: Upload image
          uses: actions/upload-artifact@v3
          with:
