@@ -9,15 +9,14 @@ jobs:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
       contents: write
-    steps:
-       
+    steps:     
        - name: echo 
          run: echo $HOME
        
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main vayu
        
-      - name: echo 
+       - name: echo 
          run: cd vayu && echo $HOME
        
        - name: build
