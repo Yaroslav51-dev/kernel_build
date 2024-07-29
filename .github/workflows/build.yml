@@ -13,14 +13,17 @@ jobs:
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
          
-#       - name: google clang
-  #       run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567 -b 14.0 $HOME/clang
+       - name: google clang
+         run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567 -b 14.0 $HOME/clang
 
        - name: google gcc
          run: |
-                 mkdir -p -v $HOME/gcc
-                 aria2c -o gcc.tar.gz https://github.com/XSans0/WeebX-Clang/releases/download/WeebX-Clang-18.1.8-release/WeebX-Clang-18.1.8.tar.gz
-                 tar -C $HOME/gcc -zxf gcc.tar.gz
+                 mkdir -p -v $HOME/gcc64
+                 aria2c -o gcc-aarch64.tar.gz https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
+                 tar -C $HOME/gcc64 -zxf gcc-aarch64.tar.gz
+                 mkdir -p -v $HOME/gcc32
+                 aria2c -o gcc-arm.tar.gz https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
+                 tar -C $HOME/gcc32 -zxf gcc-arm.tar.gz
                  
        - name: build
          run: bash $HOME/vayu/build.sh
