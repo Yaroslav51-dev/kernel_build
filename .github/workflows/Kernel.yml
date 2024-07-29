@@ -15,7 +15,16 @@ jobs:
          
        - name: google clang
          run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android-prebuilts-clang-host-linux-x-86-prelude-clang.git -b 13.0 $HOME/clang
-       
+
+       - name: google gcc
+         run: | 
+                 mkdir -p -v $HOME/gcc64
+                 aria2c -o gcc-aarch64.tar.gz https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
+                 tar -C $HOME/gcc64 -zxf gcc-aarch64.tar.gz
+                 mkdir -p -v $HOME/gcc32
+                 aria2c -o gcc-arm.tar.gz https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
+                 tar -C $HOME/gcc32 -zxf gcc-arm.tar.gz
+         
        - name: build
          run: bash $HOME/vayu/build.sh
          
