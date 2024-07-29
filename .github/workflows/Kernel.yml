@@ -1,4 +1,4 @@
-name: Build with Google toolchain
+name: Build with WeebX gcc and clang
 
 on:
   workflow_dispatch:
