@@ -1,1 +1,48 @@
+name: marble 
 
+on:
+  workflow_dispatch:
+jobs:
+  building:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:          
+       - name: git clone
+         run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
+         
+       - name: google gcc
+         run: |
+                 mkdir -p -v $HOME/gcc
+                 aria2c -o gcc.tar.gz https://github.com/XSans0/WeebX-Clang/releases/download/WeebX-Clang-18.1.8-release/WeebX-Clang-18.1.8.tar.gz
+                 tar -C $HOME/gcc -zxf gcc.tar.gz
+                 
+       - name: build
+         run: bash $HOME/vayu/build.sh
+
+       - name: build
+         run: |
+          mkdir -p -v $HOME/upload
+          cp out/arch/arm64/boot/Image $HOME/upload
+          cat out/arch/arm64/boot/dts/qcom/*.dtb > $HOME/upload
+          cp out/arch/arm64/boot/dtbo.img $HOME/upload         
+         
+       - name: Upload image
+         uses: actions/upload-artifact@v3
+         with:
+          name: Image
+          path: /out/arch/arm64/boot/Image-.*          
+
+       - name: Upload dtb
+         uses: actions/upload-artifact@v3
+         with:
+          name: dtb
+          path: /home/runner/out/arch/arm64/boot/dts/qcom/*.dtb
+
+       - name: Upload dtb
+         uses: actions/upload-artifact@v3
+         with:
+          name: dtbo.img
+          path: /home/runner/out/arch/arm64/boot/dtbo.img
