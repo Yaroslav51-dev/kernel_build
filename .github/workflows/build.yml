@@ -20,7 +20,9 @@ jobs:
          run: |
           cd vayu 
           set -e
-          bash <(curl -s https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman) "$@"
+          curl -s https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman
+          mv antman antman.sh
+          bash antman.sh          
           exit 0
          
        - name: Upload image
