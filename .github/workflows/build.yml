@@ -17,7 +17,11 @@ jobs:
          run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android-prebuilts-clang-host-linux-x-86-prelude-clang.git -b 13.0 $HOME/clang
          
        - name: build
-         run: bash $HOME/vayu/build.sh
+         run: |
+          cd vayu 
+          set -e
+          bash <(curl -s https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman) "$@"
+          exit 0
          
        - name: Upload image
          uses: actions/upload-artifact@v3
