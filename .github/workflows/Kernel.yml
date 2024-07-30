@@ -33,16 +33,16 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
           name: Image
-          path: /home/runners/upload/Image          
+          path: /home/runner/upload/Image          
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtb
-          path: /home/runners/upload/dtb
+          path: /home/runner/upload/dtb
 
        - name: Upload dtb
          uses: actions/upload-artifact@v3
          with:
           name: dtbo.img
-          path: /home/runners/upload/dtbo.img
+          path: /home/runner/upload/dtbo.img
