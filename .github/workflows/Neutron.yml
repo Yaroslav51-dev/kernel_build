@@ -1,0 +1,39 @@
+name: Build with Neutron gcc and clang
+
+on:
+  workflow_dispatch:
+jobs:
+  building:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:          
+       - name: git clone
+         run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
+         
+       - name: google gcc
+         run: |
+               git clone --depth=1 https://gitlab.com/RyuujiX/neutron-clang.git -b Neutron-16 $HOME/clang
+                 
+       - name: build
+         run: bash $HOME/vayu/build.sh
+
+       - name: Upload image
+         uses: actions/upload-artifact@v3
+         with:
+          name: Image
+          path: /home/runner/vayu/out/arch/arm64/boot/Image         
+
+       - name: Upload dtb
+         uses: actions/upload-artifact@v3
+         with:
+          name: dtb
+          path: /home/runner/vayu/out/arch/arm64/boot/dts/qcom/*.dtb
+
+       - name: Upload dtbo
+         uses: actions/upload-artifact@v3
+         with:
+          name: dtbo.img
+          path: /home/runner/vayu/out/arch/arm64/boot/dtbo.img
