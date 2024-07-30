@@ -18,7 +18,7 @@ jobs:
                git clone --depth=1 https://gitlab.com/RyuujiX/neutron-clang.git -b Neutron-16 $HOME/clang
                  
        - name: build
-         run: bash $HOME/vayu/build.sh
+         run: export PATH="$HOME/clang/bin:$PATH" && bash $HOME/vayu/build.sh
 
        - name: Upload image
          uses: actions/upload-artifact@v3
