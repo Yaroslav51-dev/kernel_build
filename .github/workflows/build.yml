@@ -14,16 +14,12 @@ jobs:
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
          
        - name: google clang
-         run: git clone --depth=1 --single-branch https://gitlab.com/crdroidandroid/android-prebuilts-clang-host-linux-x-86-prelude-clang.git -b 13.0 $HOME/clang
+         run: git clone --depth=1 --single-branch https://gitlab.com/RyuujiX/neutron-clang.git -b Neutron-16 $HOME/clang
          
        - name: build
          run: |
           cd vayu 
-          set -e
-          curl -s https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman
-          mv antman antman.sh
-          bash antman.sh          
-          exit 0
+          bash build.sh
          
        - name: Upload image
          uses: actions/upload-artifact@v3
