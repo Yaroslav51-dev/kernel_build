@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:          
        - name: git clone
-         run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
+         run: git clone --depth=1 https://github.com/Pzqqt/android_kernel_xiaomi_marble.git -b marble-rebase $HOME/vayu
          
        - name: google gcc
          run: |
