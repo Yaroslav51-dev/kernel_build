@@ -20,7 +20,7 @@ jobs:
                  tar -C $HOME/gcc -zxf gcc.tar.gz
                  
        - name: build
-         run: bash $HOME/vayu/build.sh
+         run: export PATH="$HOME/gcc/bin:$PATH" && bash $HOME/vayu/build.sh
 
        - name: Upload image
          uses: actions/upload-artifact@v3
