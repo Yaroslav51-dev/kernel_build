@@ -13,12 +13,11 @@ jobs:
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
          
-       - name: google gcc
-         run: |
-               git clone --depth=1 https://gitlab.com/RyuujiX/neutron-clang.git -b Neutron-16 $HOME/clang
+       - name: neutron
+         run: git clone --depth=1 https://gitlab.com/RyuujiX/neutron-clang.git -b Neutron-16 $HOME/clang
                  
        - name: build
-         run: export PATH="$HOME/clang/bin:$PATH" && bash $HOME/vayu/build.sh
+         run: bash $HOME/vayu/build.sh
 
        - name: Upload image
          uses: actions/upload-artifact@v3
