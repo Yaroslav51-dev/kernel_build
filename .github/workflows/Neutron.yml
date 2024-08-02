@@ -17,7 +17,7 @@ jobs:
          run: |
           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.git --depth=1 -b android-msm-coral-4.14-t-preview-2 $HOME/gcc64
           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9.git --depth=1 -b android-msm-coral-4.14-t-preview-2 $HOME/gcc32
-          git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git --depth=1 -b 14 $HOME/clang
+          git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git --depth=1 -b 14.0 $HOME/clang
           export PATH="$HOME/gcc64/bin:$PATH
           export PATH="$HOME/gcc32/bin:$PATH
           export PATH="$HOME/clang/bin:$PATH
