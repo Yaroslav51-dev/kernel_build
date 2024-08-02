@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:          
        - name: git clone
-         run: git clone --depth=1 https://github.com/Yaroslav51-dev/Vayu-kernel.git -b main $HOME/vayu
+         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main $HOME/vayu
          
        - name: neutron
          run: git clone --depth=1 https://gitlab.com/RyuujiX/neutron-clang.git -b Neutron-16 $HOME/clang
