@@ -14,7 +14,10 @@ jobs:
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main $HOME/vayu
          
        - name: neutron
-         run: git clone --depth=1 https://gitlab.com/RyuujiX/neutron-clang.git -b Neutron-16 $HOME/clang
+         run: |
+          git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.git --depth=1 -b android-msm-coral-4.14-t-preview-2 $HOME/gcc64
+          git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9.git --depth=1 -b android-msm-coral-4.14-t-preview-2 $HOME/gcc32
+          
                  
        - name: build
          run: bash $HOME/vayu/build.sh
