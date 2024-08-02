@@ -20,7 +20,7 @@ jobs:
                  tar -C $HOME/gcc -zxf gcc.tar.gz
                  
        - name: build
-         run: export PATH="$HOME/gcc/bin:$PATH" && bash $HOME/vayu/build.sh
+         run: export PATH="$HOME/gcc/bin:$PATH" && wget https://raw.githubusercontent.com/Yaroslav51-dev/kernel_build/main/script/build_weebx.sh -P $HOME/vayu && bash $HOME/vayu/build_weebx.sh
 
        - name: Upload image
          uses: actions/upload-artifact@v3
