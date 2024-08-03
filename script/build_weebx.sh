@@ -1,5 +1,6 @@
 #!/bin/bash
 cd $HOME/vayu/
+rm -r /out
 sudo apt-get update
 sudo apt-get install -y curl git ftp lftp wget libarchive-tools ccache python2 python2-dev python3
 sudo apt-get install -y pngcrush schedtool dpkg-dev liblz4-tool make optipng maven device-tree-compiler 
