@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:          
        - name: git clone
-         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_vayu-arrow.git -b main $HOME/vayu
+         run: git clone --depth=1 https://github.com/AnymoreProject/kernel_xiaomi_vayu.git -b Anymore $HOME/vayu
          
        - name: google gcc
          run: |
@@ -20,7 +20,7 @@ jobs:
                  tar -C $HOME/gcc -zxf gcc.tar.gz
                  
        - name: build
-         run: export PATH="$HOME/gcc/bin:$PATH" && wget https://raw.githubusercontent.com/Yaroslav51-dev/kernel_build/main/script/build_weebx.sh -P $HOME/vayu && bash $HOME/vayu/build.sh
+         run: export PATH="$HOME/gcc/bin:$PATH" && wget https://raw.githubusercontent.com/Yaroslav51-dev/kernel_build/main/script/build_weebx.sh -P $HOME/vayu && bash $HOME/vayu/build_weebx.sh
 
        - name: Upload image
          uses: actions/upload-artifact@v3
