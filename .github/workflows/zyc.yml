@@ -1,0 +1,41 @@
+name: Build with zyc gcc and clang
+
+on:
+  workflow_dispatch:
+jobs:
+  building:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:          
+       - name: git clone
+         run: git clone --depth=1 https://github.com/AnymoreProject/kernel_xiaomi_vayu.git -b Anymore $HOME/vayu
+         
+       - name: google gcc
+         run: |
+                 mkdir -p -v $HOME/gcc
+                 aria2c -o gcc.tar.gz https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20240803-release/Clang-20.0.0git-20240803.tar.gz
+                 tar -C $HOME/gcc -zxf gcc.tar.gz
+                 
+       - name: build
+         run: export PATH="$HOME/gcc/bin:$PATH" && wget https://raw.githubusercontent.com/Yaroslav51-dev/kernel_build/main/script/build_weebx.sh -P $HOME/vayu && bash $HOME/vayu/build_zyc.sh
+
+       - name: Upload image
+         uses: actions/upload-artifact@v3
+         with:
+          name: Image
+          path: /home/runner/vayu/out/arch/arm64/boot/Image         
+
+       - name: Upload dtb
+         uses: actions/upload-artifact@v3
+         with:
+          name: dtb
+          path: /home/runner/vayu/out/arch/arm64/boot/dts/qcom/*.dtb
+
+       - name: Upload dtbo
+         uses: actions/upload-artifact@v3
+         with:
+          name: dtbo.img
+          path: /home/runner/vayu/out/arch/arm64/boot/dtbo.img
