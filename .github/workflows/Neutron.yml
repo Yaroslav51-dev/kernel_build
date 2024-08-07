@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:          
        - name: git clone
-         run: git clone --depth=1 https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git -b liuqin-t-oss $HOME/vayu
+         run: git clone --depth=1 https://github.com/Yaroslav51-dev/MiCode_Kernel_Vayu.git -b vayu-r-oss $HOME/vayu
          
        - name: google clang and gcc
          run: |
