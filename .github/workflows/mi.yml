@@ -20,7 +20,7 @@ jobs:
                  export PATH="$HOME/toolchain/gcc/aarch64-linux-android-4.9/bin:$PATH"
                  
        - name: build
-         run: wget https://raw.githubusercontent.com/Yaroslav51-dev/kernel_build/main/script/build_google.sh -P $HOME/vayu && bash $HOME/vayu/build_mi.sh
+         run: wget https://raw.githubusercontent.com/Yaroslav51-dev/kernel_build/main/script/build_mi.sh -P $HOME/vayu && bash $HOME/vayu/build_mi.sh
 
        - name: Upload image
          uses: actions/upload-artifact@v3
