@@ -18,6 +18,7 @@ jobs:
          
        - name: google clang and gcc
          run: |
+                 mkdir -p -v $HOME/out
                  mkdir -p -v $HOME/gcc64
                  aria2c -o gcc-aarch64.tar.gz https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/tags/android-14.0.0_r0.108.tar.gz
                  tar -C $HOME/gcc64 -zxf gcc-aarch64.tar.gz
