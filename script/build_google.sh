@@ -26,6 +26,6 @@ LLVM_IAS=1
 DTC_EXT=dtc
 "
 
-make -j$(nproc) -C O=out ${ARGS} clean && mkdir /out && make -j8 -C O=out ${ARGS} mrproper
-make -j$(nproc) -C O=out ${ARGS} vayu_user_defconfig
-make -j$(nproc) -C O=out ${ARGS}
+make -j$(nproc) -C O=$HOME/out ${ARGS} clean && make -j8 -C O=$HOME/out ${ARGS} mrproper
+make -j$(nproc) -C O=$HOME/out ${ARGS} vayu_user_defconfig
+make -j$(nproc) -C O=$HOME/out ${ARGS}
