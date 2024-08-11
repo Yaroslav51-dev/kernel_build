@@ -9,5 +9,31 @@ sudo apt-get install -y build-essential bc gcc-aarch64-linux-gnu gcc-arm-linux-g
 sudo apt-get install -y pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl 
 sudo apt-get install -y zip unzip tar gzip bzip2 rar unrar llvm g++-multilib bison gperf zlib1g-dev automake
 
-make -s ARCH=arm64 O=out vayu_user_defconfig -j$(nproc --all) SUBARCH=arm64
-make -j$(nproc --all) O=out ARCH=arm64 SUBARCH=arm64 LLVM=1 LLVM_IAS=1 DTC_EXT=dtc REAL_CC=clang CLANG_TRIPLE="aarch64-linux-gnu-" CROSS_COMPILE="aarch64-linux-gnu-" CROSS_COMPILE_ARM32="arm-linux-gnueabi-"
+export PLATFORM_VERSION=13
+export ANDROID_MAJOR_VERSION=t
+
+ARGS="
+CC=clang
+CROSS_COMPILE=aarch64-linux-gnu-
+ARCH=arm64
+LD=ld.lld
+AR=llvm-ar
+NM=llvm-nm
+OBJCOPY=llvm-objcopy
+OBJDUMP=llvm-objdump
+READELF=llvm-readelf
+OBJSIZE=llvm-size
+STRIP=llvm-strip
+LLVM_AR=llvm-ar
+LLVM_DIS=llvm-dis
+CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+ARCH=arm64
+SUBARCH=arm64
+LLVM=1
+LLVM_IAS=1
+DTC_EXT=dtc
+"
+
+make -j$(nproc) -C O=/out ${ARGS} clean && make -j8 -C O=/out ${ARGS} mrproper
+make -j$(nproc) -C O=/out ${ARGS} vayu_user_defconfig
+make -j$(nproc) -C O=/out ${ARGS}
