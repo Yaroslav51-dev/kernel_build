@@ -26,6 +26,6 @@ LLVM_IAS=1
 DTC_EXT=dtc
 "
 
-make -j$(nproc) -C ${ARGS} clean && make -j8 -C ${ARGS} mrproper
+make -j$(nproc) -C ${ARGS} mrproper
 make -j$(nproc) -C ${ARGS} vayu_user_defconfig
 make -j$(nproc) -C ${ARGS}
