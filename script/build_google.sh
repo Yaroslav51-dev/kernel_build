@@ -9,10 +9,9 @@ sudo apt-get install -y libxml2-utils libbz2-dev libbz2-1.0 libghc-bzlib-dev squ
 sudo apt-get install -y build-essential bc gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi libssl-dev libfl-dev
 sudo apt-get install -y pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl 
 sudo apt-get install -y zip unzip tar gzip bzip2 rar unrar llvm g++-multilib bison gperf zlib1g-dev automake
+export KBUILD_BUILD_HOST=Yaroslavkryt
+export KBUILD_BUILD_USER=t.me
 
-export PLATFORM_VERSION=13
-export ANDROID_MAJOR_VERSION=t
-
-make -j$(nproc) -C 0=out mrproper
-make -j$(nproc) -C CC=clang CROSS_COMPILE=aarch64-linux-gnu- ARCH=arm64 LD=ld.lld AR=llvm-ar NM=llvm-nmOBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip LLVM_AR=llvm-ar LLVM_DIS=llvm-dis CROSS_COMPILE_ARM32=arm-linux-gnueabi- SUBARCH=arm64 LLVM=1 LLVM_IAS=1 DTC_EXT=dtc 0=out vayu_user_defconfig
-make -j$(nproc) -C CC=clang CROSS_COMPILE=aarch64-linux-gnu- ARCH=arm64 LD=ld.lld AR=llvm-ar NM=llvm-nmOBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip LLVM_AR=llvm-ar LLVM_DIS=llvm-dis CROSS_COMPILE_ARM32=arm-linux-gnueabi- SUBARCH=arm64 LLVM=1 LLVM_IAS=1 DTC_EXT=dtc 0=out
+make mrproper
+make -s ARCH=arm64 O=out vayu_user_defconfig -j$(nproc --all) SUBARCH=arm64
+make -j$(nproc --all) O=out DTC_EXT=dtc ARCH=arm64 REAL_CC=clang CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
