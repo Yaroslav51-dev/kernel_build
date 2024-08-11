@@ -12,6 +12,9 @@ jobs:
     steps:          
        - name: git clone
          run: git clone --depth=1 https://github.com/Yaroslav51-dev/MiCode_Kernel_Vayu.git -b vayu-r-oss $HOME/vayu
+
+       - name: git clone
+         run: curl https://raw.githubusercontent.com/akhilnarang/scripts/master/setup/android_build_env.sh | bash -
          
        - name: google clang and gcc
          run: |
