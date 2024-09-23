@@ -19,7 +19,7 @@ jobs:
                  git clone https://android.googlesource.com/platform/prebuilts/build-tools $HOME/build-tools --depth=1
                  git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 $HOME/gas/linux-x86 --depth=1
                  export PATH="$HOME/clang/bin:$PATH"
-                 export PATH=$HOMEtc/build-tools/path/linux-x86:$PATH
+                 export PATH=$HOME/build-tools/path/linux-x86:$PATH
                  export PATH=$HOME/gas/linux-x86:$PATH
                  
        - name: build
