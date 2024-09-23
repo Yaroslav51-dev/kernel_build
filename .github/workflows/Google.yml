@@ -15,16 +15,12 @@ jobs:
 
        - name: google clang and gcc
          run: |
-                 mkdir -p -v $HOME/gcc64
-                 aria2c -o gcc-aarch64.tar.gz https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/tags/android-14.0.0_r0.108.tar.gz
-                 tar -C $HOME/gcc64 -zxf gcc-aarch64.tar.gz
-                 mkdir -p -v $HOME/gcc32
-                 aria2c -o gcc-arm.tar.gz https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/tags/android-14.0.0_r0.108.tar.gz
-                 tar -C $HOME/gcc32 -zxf gcc-arm.tar.gz
                  git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git --depth=1 -b 14.0 $HOME/clang
-                 export PATH="$HOME/gcc64/bin:$PATH"
-                 export PATH="$HOME/gcc32/bin:$PATH"
+                 git clone https://android.googlesource.com/platform/prebuilts/build-tools $HOME/build-tools --depth=1
+                 git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 $HOME/gas/linux-x86 --depth=1
                  export PATH="$HOME/clang/bin:$PATH"
+                 export PATH=$HOMEtc/build-tools/path/linux-x86:$PATH
+                 export PATH=$HOME/gas/linux-x86:$PATH
                  
        - name: build
          run: wget https://raw.githubusercontent.com/Yaroslav51-dev/kernel_build/main/script/build_google.sh -P $HOME/vayu && bash $HOME/vayu/build_google.sh
