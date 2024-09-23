@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:          
        - name: git clone
-         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_liuqin.git -b main $HOME/vayu
+         run: git clone --depth=1 https://github.com/Yaroslav51-dev/android_kernel_xiaomi_liuqin.git -b main $HOME/kernel
 
        - name: google clang and gcc
          run: |
