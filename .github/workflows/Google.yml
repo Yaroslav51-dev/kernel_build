@@ -17,7 +17,7 @@ jobs:
          run: |
                  git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r530567.git --depth=1 -b 14.0 $HOME/clang
                  git clone https://android.googlesource.com/platform/prebuilts/build-tools $HOME/build-tools --depth=1
-                 git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 $HOME/gas/linux-x86 --depth=1
+                 git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 $HOME/gas --depth=1
                  export PATH="$HOME/clang/bin:$PATH"
                  export PATH=$HOME/build-tools/path/linux-x86:$PATH
                  export PATH=$HOME/gas/linux-x86:$PATH
