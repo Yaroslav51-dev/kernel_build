@@ -13,6 +13,9 @@ export KBUILD_BUILD_HOST=Yaroslavkryt
 export KBUILD_BUILD_USER=t.me
 export PATH="$HOME/gcc/bin:$PATH"
 
-make -s ARCH=arm64 O=out vayu_defconfig -j$(nproc --all) SUBARCH=arm64
-make -j$(nproc --all) O=out ARCH=arm64 LLVM=1 LLVM_IAS=1 CC="ccache clang" CLANG_TRIPLE="aarch64-linux-gnu-" CROSS_COMPILE="aarch64-linux-gnu-" CROSS_COMPILE_ARM32="arm-linux-gnueabi-"
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
+
+make mrproper
+make -s ARCH=arm64 O=out nabu-stock_defconfig -j$(nproc --all) SUBARCH=arm64
+make -j$(nproc --all) O=out DTC_EXT=dtc ARCH=arm64 REAL_CC=clang CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
