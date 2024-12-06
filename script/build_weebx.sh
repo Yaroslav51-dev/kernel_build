@@ -12,6 +12,7 @@ sudo apt-get install -y zip unzip tar gzip bzip2 rar unrar llvm g++-multilib bis
 export KBUILD_BUILD_HOST=Yaroslavkryt
 export KBUILD_BUILD_USER=t.me
 export PATH="$HOME/gcc/bin:$PATH"
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
 
 make mrproper
 make -s ARCH=arm64 O=out nabu-stock_defconfig -j$(nproc --all) SUBARCH=arm64
