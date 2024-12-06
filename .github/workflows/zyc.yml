@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:          
        - name: git clone
-         run: git clone --depth=1 https://github.com/AnymoreProject/kernel_xiaomi_vayu.git -b Anymore $HOME/vayu
+         run: git clone --depth=1 https://github.com/Rave-Project/android_kernel_nabu_sm8150-ac.git -b main $HOME/vayu
          
        - name: google gcc
          run: |
